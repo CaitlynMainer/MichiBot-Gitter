@@ -247,22 +247,11 @@ public class IRCBot {
 		    System.out.println(user.getNick() + " is cached");
 	    } else {
 		    System.out.println(user.getNick() + " is NOT cached");
-		    user.isVerified();
-		    try {
-			    sourceBot.sendRaw().rawLine("WHOIS " + user.getNick() + " " + user.getNick());
-			    WaitForQueue waitForQueue = new WaitForQueue(sourceBot);
-			    WhoisEvent whoisEvent = waitForQueue.waitFor(WhoisEvent.class);
-			    waitForQueue.close();
-			    nsRegistration = whoisEvent.getRegisteredAs();
-		    } catch (Exception e) {
-			    e.printStackTrace();
-		    }
-		    if (!nsRegistration.isEmpty()) {
-			    Calendar future = Calendar.getInstance();
-			    future.add(Calendar.MINUTE,5);
-			    userCache.put(user.getUserId(), new ExpiringToken(future.getTime(),nsRegistration));
-			    System.out.println(user.getUserId().toString() + " added to cache: " + nsRegistration + " expires at " + future.toString());
-		    }
+		    nsRegistration = user.getUserID();
+		    Calendar future = Calendar.getInstance();
+		    future.add(Calendar.MINUTE,5);
+		    userCache.put(user.getUserId(), new ExpiringToken(future.getTime(),nsRegistration));
+		    System.out.println(user.getUserId().toString() + " added to cache: " + nsRegistration + " expires at " + future.toString());
 	    }
 	    if (getOps().contains(nsRegistration)) {
 		    return true;
