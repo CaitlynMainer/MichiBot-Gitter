@@ -248,7 +248,7 @@ public class IRCBot {
 	    } else {
 	    	//test
 		    System.out.println(user.getNick() + " is NOT cached");
-		    nsRegistration = user.getUserId();
+		    nsRegistration = user.getNick();
 		    Calendar future = Calendar.getInstance();
 		    future.add(Calendar.MINUTE,5);
 		    userCache.put(user.getUserId(), new ExpiringToken(future.getTime(),nsRegistration));
