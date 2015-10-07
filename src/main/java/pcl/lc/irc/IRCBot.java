@@ -246,6 +246,7 @@ public class IRCBot {
 		    nsRegistration = userCache.get(user.getUserId()).getValue();
 		    System.out.println(user.getNick() + " is cached");
 	    } else {
+	    	//test
 		    System.out.println(user.getNick() + " is NOT cached");
 		    nsRegistration = user.getUserID();
 		    Calendar future = Calendar.getInstance();
