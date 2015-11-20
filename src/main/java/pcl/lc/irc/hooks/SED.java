@@ -61,7 +61,7 @@ public class SED extends ListenerAdapter {
 							String s = messageEvent.substring(messageEvent.indexOf("/") + 1);
 							s = s.substring(0, s.indexOf("/"));
 
-							String message = event.getMessage().replaceFirst("%", "");
+							String message = event.getMessage().replaceFirst("(%)+", "");
 							if (!message.substring(message.length() - 2).equals("/g")) {
 								if(!message.substring(message.length() - 2).equals("/i")) {
 									if (!message.substring(message.length() - 1).equals("/")) {
@@ -78,7 +78,7 @@ public class SED extends ListenerAdapter {
 											if (reply.length() >= 380) {
 												reply = reply.substring(0, 380);
 											}
-											event.getChannel().send().message("<" + entry.getValue().get(1) + "> " + reply);
+											event.getChannel().send().message("@" + entry.getValue().get(1) + " " + reply);
 											List<String> list = new ArrayList<String>();
 											list.add(event.getChannel().getName().toString());
 											list.add(entry.getValue().get(1));
