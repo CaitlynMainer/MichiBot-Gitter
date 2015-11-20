@@ -54,7 +54,7 @@ public class SED extends ListenerAdapter {
 			if (trigger.length() > 1) {
 				String messageEvent = event.getMessage();
 				String reply = null;
-				if (event.getMessage().matches("s/(.+)/(.+)")) {
+				if (event.getMessage().matches(prefix + "s/(.+)/(.+)")) {
 					if (!IRCBot.isIgnored(event.getUser().getNick())) {					
 						if (enabledChannels.contains(event.getChannel().getName())) {
 
