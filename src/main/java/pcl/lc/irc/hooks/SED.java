@@ -61,7 +61,7 @@ public class SED extends ListenerAdapter {
 							String s = messageEvent.substring(messageEvent.indexOf("/") + 1);
 							s = s.substring(0, s.indexOf("/"));
 
-							String message = event.getMessage();
+							String message = event.getMessage()replaceFirst("(?:\%)+", "");
 							if (!message.substring(message.length() - 2).equals("/g")) {
 								if(!message.substring(message.length() - 2).equals("/i")) {
 									if (!message.substring(message.length() - 1).equals("/")) {
