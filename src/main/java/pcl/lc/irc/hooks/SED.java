@@ -52,7 +52,7 @@ public class SED extends ListenerAdapter {
 			String trigger = ourinput.replaceAll("[^a-zA-Z0-9 ]", "").trim();
 			String trigger2 = event.getMessage().toLowerCase().trim();
 			if (trigger.length() > 1) {
-				String messageEvent = event.getMessage();
+				String messageEvent = event.getMessage().substring(1);
 				String reply = null;
 				if (event.getMessage().matches(prefix + "s/(.+)/(.+)")) {
 					if (!IRCBot.isIgnored(event.getUser().getNick())) {					
